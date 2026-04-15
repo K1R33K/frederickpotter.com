@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Case Studies — Frederick Potter | Head of Product</title>
+  <meta name="description" content="104 case studies across 12 regulated sectors. Search by skill, sector, or keyword to explore 9 years of product leadership.">
+  <meta property="og:title" content="Frederick Potter — Case Study Portfolio">
+  <meta property="og:description" content="104 digital products. 12 sectors. 9 years. Explore the full case study library.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__name">Frederick Potter</a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="case-studies.html" class="nav__link nav__link--active">Case Studies</a>
+        <a href="mailto:fpotter1993@gmail.com" class="nav__link">Contact</a>
+      </div>
+      <button class="nav__hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <div class="nav__hamburger-icon">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+    </div>
+    <div class="nav__mobile-panel">
+      <a href="index.html" class="nav__mobile-link">Home</a>
+      <a href="case-studies.html" class="nav__mobile-link">Case Studies</a>
+      <a href="mailto:fpotter1993@gmail.com" class="nav__mobile-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="container">
+      <h1 class="page-hero__title hero-animate">Case Studies</h1>
+      <p class="page-hero__subtitle hero-animate hero-animate--delay-1">104 projects across 12 regulated sectors, 9 years of product leadership.</p>
+    </div>
+  </header>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <div class="container">
+      <div class="filter-bar__inner">
+        <div class="filter-bar__row">
+          <div class="filter-bar__search">
+            <svg class="filter-bar__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M11 11L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input
+              type="search"
+              id="search-input"
+              class="filter-bar__search-input"
+              placeholder="Search projects, clients, skills..."
+              aria-label="Search case studies"
+            >
+          </div>
+
+          <div class="filter-dropdown" id="sector-dropdown">
+            <button class="filter-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+              <span>Sector</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="filter-dropdown__panel filter-dropdown__panel--sectors" id="sector-filters"></div>
+          </div>
+
+          <div class="filter-dropdown" id="engagement-dropdown">
+            <button class="filter-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+              <span>Engagement Type</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="filter-dropdown__panel" id="engagement-filters"></div>
+          </div>
+
+          <div class="filter-dropdown" id="type-dropdown">
+            <button class="filter-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+              <span>Project Type</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="filter-dropdown__panel" id="project-type-filters"></div>
+          </div>
+
+          <div class="filter-dropdown" id="size-dropdown">
+            <button class="filter-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+              <span>Company Size</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="filter-dropdown__panel" id="company-size-filters"></div>
+          </div>
+
+          <div class="filter-dropdown" id="skills-dropdown-wrap">
+            <button class="filter-dropdown__trigger" aria-haspopup="true" aria-expanded="false">
+              <span>Skills</span>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </button>
+            <div class="filter-dropdown__panel filter-dropdown__panel--skills">
+              <div class="filter-dropdown__search">
+                <input type="text" class="filter-dropdown__search-input" placeholder="Search skills..." aria-label="Search skills">
+              </div>
+              <div class="filter-dropdown__list" id="skills-list"></div>
+            </div>
+          </div>
+
+          <span class="filter-bar__result-count" id="result-count">104 case studies</span>
+          <button class="filter-bar__clear" id="clear-filters" style="display:none">Clear all</button>
+        </div>
+
+        <div class="active-filters" id="active-filters" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card Grid -->
+  <main class="section">
+    <div class="container">
+      <div class="card-grid" id="card-grid"></div>
+
+      <div class="empty-state" id="empty-state" style="display:none">
+        <h2 class="empty-state__title">No matching case studies</h2>
+        <p class="empty-state__text">Try adjusting your filters or search terms to find what you're looking for.</p>
+        <button class="empty-state__action" id="empty-state-clear">Clear all filters</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div>
+          <div class="footer__name">Frederick Potter</div>
+          <p class="footer__text">Head of Product — 9 years, 104 projects, 12 regulated sectors.</p>
+        </div>
+        <div class="footer__links">
+          <a href="mailto:fpotter1993@gmail.com" class="footer__link">fpotter1993@gmail.com</a>
+          <a href="tel:+447806667431" class="footer__link">+44 7806 667431</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/case-studies.js"></script>
+  <script>
+    // Empty state clear button
+    document.getElementById('empty-state-clear')?.addEventListener('click', () => {
+      document.getElementById('clear-filters')?.click();
+    });
+  </script>
+</body>
+</html>
