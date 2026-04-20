@@ -3481,7 +3481,7 @@ export const CASE_STUDIES = [
       "C#/.NET",
       "Cloud Architecture"
     ],
-    "outcome": "No PII ever leaves the machine — local ChromaDB and Presidio anonymisation. Created an entirely new MCP service offering for the company",
+    "outcome": "Grant writing cut from 3 hours to 30 minutes within first days of deployment. Staff built a pipeline of ready-to-submit grants in their own corporate language — including grants not yet open. Organisation rolling out company-wide with parent company requesting deployment across partner organisations. Now integral to their $5M investment plan over the next 2 years. Client feedback: 'Loved it'",
     "relationship": "Referral network — business group connection",
     "sector": "social-impact",
     "spotlight": false,
