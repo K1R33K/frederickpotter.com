@@ -34,7 +34,7 @@ SECTOR_MAP = {
     # Healthcare & Life Sciences
     23: "health", 29: "health", 47: "health", 59: "health",
     60: "health", 92: "health", 99: "health", 102: "health",
-    107: "health",
+    107: "health", 108: "health",
     # Education & Training
     7: "education", 8: "education", 15: "education", 34: "education", 90: "education",
     # Legal & Professional Services
@@ -97,7 +97,7 @@ def derive_engagement_type(relationship):
 # ── Project type (case study number → list of type keys) ─────────────────────
 # A project can have multiple types.
 PROJECT_TYPE_MAP = {
-    # AI & Machine Learning (54 projects total)
+    # AI & Machine Learning (57 projects total)
     1: ["ai-ml", "build"], 2: ["ai-ml", "build"], 3: ["ai-ml", "build"],
     4: ["ai-ml", "strategy"], 6: ["ai-ml", "build"],
     7: ["ai-ml", "strategy"], 8: ["ai-ml", "strategy"],
@@ -123,6 +123,8 @@ PROJECT_TYPE_MAP = {
     95: ["ai-ml", "build"], 96: ["ai-ml", "build"],
     99: ["ai-ml", "build"], 100: ["ai-ml", "build", "data"],
     103: ["ai-ml", "data"], 104: ["ai-ml", "data"],
+    105: ["ai-ml", "build", "data"], 106: ["ai-ml", "build"],
+    107: ["ai-ml", "build", "data"],
     # AI & Machine Learning + Data focus
     35: ["ai-ml", "build", "data"], 43: ["ai-ml", "build", "data"],
     97: ["ai-ml", "build", "data"],
@@ -292,8 +294,8 @@ def parse_skills(raw):
     return [s.strip() for s in raw.split(",") if s.strip()]
 
 
-def extract_metrics(outcome, solution):
-    """Pull headline stats and quotes from outcome/solution text."""
+def extract_metrics(result, action):
+    """Pull headline stats and quotes from result/action text."""
     metrics = {}
 
     # Try to find a quoted testimonial
@@ -302,17 +304,17 @@ def extract_metrics(outcome, solution):
         r":\s*[''\"](.*?)[''\"]\s*$",        # colon then quote
         r"[''\"](.*?)[''\"]\s*$",            # unicode quotes
     ]
-    text = outcome or ""
+    text = result or ""
     for pattern in quote_patterns:
         match = re.search(pattern, text)
         if match and len(match.group(1)) > 15:
             metrics["quote"] = match.group(1)
             break
 
-    # Fall back to solution text for quotes
-    if "quote" not in metrics and solution:
+    # Fall back to action text for quotes
+    if "quote" not in metrics and action:
         for pattern in quote_patterns:
-            match = re.search(pattern, solution)
+            match = re.search(pattern, action)
             if match and len(match.group(1)) > 15:
                 metrics["quote"] = match.group(1)
                 break
@@ -341,9 +343,9 @@ def read_spreadsheet():
             "project": project,
             "about": str(ws.cell(row=row_idx, column=3).value or "").strip(),
             "challenge": str(ws.cell(row=row_idx, column=4).value or "").strip(),
-            "solution": str(ws.cell(row=row_idx, column=5).value or "").strip(),
+            "action": str(ws.cell(row=row_idx, column=5).value or "").strip(),
             "skills": parse_skills(str(ws.cell(row=row_idx, column=6).value or "")),
-            "outcome": str(ws.cell(row=row_idx, column=7).value or "").strip(),
+            "result": str(ws.cell(row=row_idx, column=7).value or "").strip(),
             "relationship": str(ws.cell(row=row_idx, column=8).value or "").strip(),
             "sector": SECTOR_MAP.get(num, "technology"),
             "spotlight": num in SPOTLIGHT_NUMS,
@@ -355,7 +357,7 @@ def read_spreadsheet():
         }
 
         if cs["spotlight"]:
-            cs["metrics"] = extract_metrics(cs["outcome"], cs["solution"])
+            cs["metrics"] = extract_metrics(cs["result"], cs["action"])
 
         case_studies.append(cs)
 

@@ -571,7 +571,7 @@ ul, ol { list-style: none; }
   color: var(--color-text-secondary);
 }
 
-.card__outcome {
+.card__result {
   margin-top: var(--space-sm);
   font-family: var(--font-display);
   font-size: var(--text-xs);
@@ -797,7 +797,7 @@ ul, ol { list-style: none; }
   margin-bottom: 0;
 }
 
-.detail-panel__outcome {
+.detail-panel__result {
   font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 600;

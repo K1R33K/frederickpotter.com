@@ -64,7 +64,7 @@ export function renderCard(cs, { linkSkills = false, staggerIndex = 0 } = {}) {
   card.dataset.sector = cs.sector;
   card.dataset.skills = (cs.skills || []).join('|').toLowerCase();
   card.dataset.searchable = [
-    cs.client, cs.project, cs.about, cs.challenge, cs.solution, cs.outcome
+    cs.client, cs.project, cs.about, cs.challenge, cs.action, cs.result
   ].join(' ').toLowerCase();
 
   // Show first 5 skills on card face
@@ -83,7 +83,7 @@ export function renderCard(cs, { linkSkills = false, staggerIndex = 0 } = {}) {
       <h3 class="card__client">${escapeHtml(cs.client)}</h3>
       ${cs.project ? `<p class="card__project">${escapeHtml(cs.project)}</p>` : ''}
       ${cs.about ? `<p class="card__about">${escapeHtml(cs.about)}</p>` : ''}
-      <p class="card__outcome">${escapeHtml(cs.outcome)}</p>
+      <p class="card__result">${escapeHtml(cs.result)}</p>
       ${cs.relationship ? `<p class="card__relationship">${escapeHtml(cs.relationship)}</p>` : ''}
       <div class="card__preview-skills">
         ${previewSkillTags}
@@ -203,17 +203,17 @@ export function openDetailPanel(num) {
         </div>
       ` : ''}
 
-      ${cs.solution ? `
+      ${cs.action ? `
         <div class="detail-panel__section">
-          <div class="detail-panel__section-label">The Solution</div>
-          <div class="detail-panel__section-text">${formatText(cs.solution)}</div>
+          <div class="detail-panel__section-label">The Action</div>
+          <div class="detail-panel__section-text">${formatText(cs.action)}</div>
         </div>
       ` : ''}
 
-      ${cs.outcome ? `
+      ${cs.result ? `
         <div class="detail-panel__section">
-          <div class="detail-panel__section-label">Outcome</div>
-          <div class="detail-panel__outcome">${escapeHtml(cs.outcome)}</div>
+          <div class="detail-panel__section-label">Result</div>
+          <div class="detail-panel__result">${escapeHtml(cs.result)}</div>
         </div>
       ` : ''}
 
